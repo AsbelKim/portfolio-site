@@ -1,17 +1,42 @@
-# Asbel Kimutai Portfolio Website
+# Asbel Kimutai — Portfolio Website
 
-This folder contains a simple personal portfolio website built with HTML, CSS, and JavaScript.
+Personal portfolio for **Asbel Kimutai**, Software Engineer & ERP Specialist based in Nairobi, Kenya.
 
-## Files
+**Live site:** [AsbelKim.github.io/portfolio-site](https://AsbelKim.github.io/portfolio-site)
 
-- `index.html` — main portfolio page
-- `styles.css` — styling for the page
-- `script.js` — small footer date script
+## Stack
 
-## Open in VS Code
+- Plain HTML, CSS, JavaScript — no build step required
+- Scroll-reveal animations via IntersectionObserver
+- Fully responsive (mobile-first)
 
-Open the folder at `C:\Users\Kimutify\portfolio-site` in VS Code to view and edit the website.
+## Structure
+
+```
+portfolio-site/
+├── index.html        — all sections
+├── styles.css        — design system & layout
+├── script.js         — navbar, scroll effects, animations
+└── images/
+    ├── hero.jpg      — professional headshot (hero circle)
+    └── about.jpg     — portrait for About section
+```
+
+## Adding your photos
+
+Copy your images into the `images/` folder with these exact names:
+
+| File | Photo to use |
+|------|-------------|
+| `images/hero.jpg` | Professional headshot (gray suit photo) |
+| `images/about.jpg` | Blue blazer / tea field photo |
 
 ## Run locally
 
-Open `index.html` in your browser, or use a live server extension for local preview.
+Open `index.html` directly in your browser, or use the VS Code **Live Server** extension for hot-reload preview.
+
+## Deploy to GitHub Pages
+
+1. Push this repo to GitHub as `portfolio-site`
+2. Go to **Settings → Pages → Source → main branch / root**
+3. Your site will be live at `https://AsbelKim.github.io/portfolio-site`
