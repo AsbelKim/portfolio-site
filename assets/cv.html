@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asbel Kimutai — CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      font-size: 10.5pt;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 42px 52px;
+    }
+
+    /* Header */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px solid #0ea5e9;
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+      gap: 1rem;
+    }
+
+    .cv-header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #0c1a2e;
+      letter-spacing: -0.02em;
+    }
+    .cv-header-left .title {
+      font-size: 10pt;
+      font-weight: 500;
+      color: #0ea5e9;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .cv-header-right {
+      text-align: right;
+      font-size: 9pt;
+      color: #444;
+      line-height: 1.7;
+    }
+    .cv-header-right a { color: #0ea5e9; text-decoration: none; }
+
+    /* Section */
+    .cv-section { margin-bottom: 18px; }
+    .cv-section h2 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0ea5e9;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Summary */
+    .summary p { color: #333; }
+
+    /* Experience */
+    .job { margin-bottom: 12px; }
+    .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .job-title { font-weight: 700; font-size: 10.5pt; }
+    .job-date { font-size: 9pt; color: #666; white-space: nowrap; }
+    .job-company { color: #0ea5e9; font-size: 9.5pt; font-weight: 500; margin: 1px 0 5px; }
+    .job ul { padding-left: 14px; list-style: disc; }
+    .job li { margin-bottom: 2.5px; color: #333; font-size: 10pt; }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+    .skill-row { display: flex; gap: 6px; align-items: baseline; font-size: 10pt; }
+    .skill-label { font-weight: 600; white-space: nowrap; min-width: 130px; color: #222; }
+    .skill-value { color: #444; }
+
+    /* Education */
+    .edu-item { margin-bottom: 10px; }
+    .edu-header { display: flex; justify-content: space-between; }
+    .edu-degree { font-weight: 700; }
+    .edu-date { font-size: 9pt; color: #666; }
+    .edu-school { color: #0ea5e9; font-size: 9.5pt; font-weight: 500; margin: 1px 0 2px; }
+    .edu-note { color: #444; font-size: 9.5pt; }
+
+    /* Project */
+    .project-item { margin-bottom: 10px; }
+    .project-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .project-name { font-weight: 700; }
+    .project-link { font-size: 9pt; color: #0ea5e9; }
+    .project-stack { color: #555; font-size: 9.5pt; margin: 2px 0 4px; }
+    .project-item ul { padding-left: 14px; list-style: disc; }
+    .project-item li { color: #333; font-size: 10pt; margin-bottom: 2px; }
+
+    /* Cert */
+    .cert-item { margin-bottom: 6px; }
+    .cert-name { font-weight: 600; }
+    .cert-issuer { color: #555; font-size: 9.5pt; }
+
+    /* References */
+    .refs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .ref-item { font-size: 9.5pt; }
+    .ref-item strong { display: block; font-weight: 600; margin-bottom: 1px; }
+    .ref-item p { color: #555; line-height: 1.5; }
+
+    /* Print */
+    @media print {
+      body { font-size: 10pt; }
+      .page { padding: 28px 38px; max-width: 100%; }
+      .no-print { display: none; }
+      a { color: #0ea5e9 !important; }
+    }
+
+    /* Print button (screen only) */
+    .print-bar {
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 13px;
+    }
+    .print-bar button {
+      background: #0ea5e9;
+      color: #fff;
+      border: none;
+      padding: 8px 22px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 12px;
+    }
+    .print-bar button:hover { background: #0284c7; }
+    @media print { .print-bar { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div class="print-bar no-print">
+    To save as PDF: <button onclick="window.print()">Print / Save as PDF</button>
+    &nbsp;&nbsp; <a href="../index.html" style="color:#7dd3fc;">← Back to Portfolio</a>
+  </div>
+
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="cv-header">
+      <div class="cv-header-left">
+        <h1>Asbel Kimutai</h1>
+        <p class="title">Software Engineer &bull; Full-Stack Developer &bull; ERP Specialist</p>
+      </div>
+      <div class="cv-header-right">
+        <p>Nairobi, Kenya</p>
+        <p><a href="mailto:asbelkimutai455@gmail.com">asbelkimutai455@gmail.com</a></p>
+        <p>+254 729 755 137</p>
+        <p><a href="https://github.com/AsbelKim">github.com/AsbelKim</a></p>
+        <p><a href="https://www.linkedin.com/in/asbelkimutai">linkedin.com/in/asbelkimutai</a></p>
+        <p><a href="https://www.upwork.com/freelancers/~01102719288a568b07">Upwork Profile</a></p>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="cv-section summary">
+      <h2>Summary</h2>
+      <p>Software Engineer combining ERP implementation experience with full-stack development. TallyPrime Specialist with deployments across 5 client businesses including KRA eTims and M-Pesa integrations. Built and shipped a production-ready market platform on React, Node.js, and SQLite with live M-Pesa STK Push payments and multi-role JWT authentication. Available full-time on-site, hybrid, or remote. Targeting roles that bridge ERP delivery and custom software development.</p>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="cv-section">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-row"><span class="skill-label">Languages & Frameworks</span><span class="skill-value">JavaScript, TypeScript, React 18, Node.js, Express, PHP, Laravel, Python, HTML, CSS</span></div>
+        <div class="skill-row"><span class="skill-label">Backend & Integrations</span><span class="skill-value">REST API, JWT Auth, M-Pesa STK Push, KRA eTims, SQLite</span></div>
+        <div class="skill-row"><span class="skill-label">ERP Systems</span><span class="skill-value">TallyPrime (Specialist), MS Dynamics 365 / Business Central, Oracle NetSuite</span></div>
+        <div class="skill-row"><span class="skill-label">Deployment & Tools</span><span class="skill-value">Git, GitHub, Heroku, Vercel, Railway, Render</span></div>
+        <div class="skill-row"><span class="skill-label">ERP Practices</span><span class="skill-value">Data migration, system documentation, end-user training, post-go-live support</span></div>
+        <div class="skill-row"><span class="skill-label">Languages</span><span class="skill-value">English (fluent), Kiswahili (fluent)</span></div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="cv-section">
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Software Developer</span>
+          <span class="job-date">Apr 2026 – Present</span>
+        </div>
+        <p class="job-company">Imara Logic Systems</p>
+        <ul>
+          <li>Supporting software development and business system implementation projects for local clients.</li>
+          <li>Assisting with website updates, system testing, troubleshooting, and user support.</li>
+          <li>Collaborating on digital solutions, workflow automation, and client onboarding.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Brand Ambassador</span>
+          <span class="job-date">Dec 2025 – Apr 2026</span>
+        </div>
+        <p class="job-company">Safaricom PLC — Nairobi, Kenya</p>
+        <ul>
+          <li>Drove SIM registration, M-Pesa onboarding, and product activations against daily KPIs.</li>
+          <li>Handled live M-Pesa transactions and resolved customer issues at point of sale.</li>
+          <li>Fed field insights back to marketing on product reception and customer objections.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">IT / Systems Assistant</span>
+          <span class="job-date">Sep 2025 – Nov 2025</span>
+        </div>
+        <p class="job-company">Esra Company Limited — Nairobi, Kenya</p>
+        <ul>
+          <li>Operated TallyPrime daily for accounting, inventory, and transaction posting.</li>
+          <li>Resolved hardware and end-user system issues; managed user accounts and access permissions.</li>
+          <li>Maintained IT infrastructure uptime across the office.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">ERP Implementation Intern</span>
+          <span class="job-date">Apr 2025 – Sep 2025</span>
+        </div>
+        <p class="job-company">ERP Business System Solutions — Nairobi, Kenya</p>
+        <ul>
+          <li>Deployed TallyPrime for 5 client businesses across retail, services, and distribution sectors.</li>
+          <li>Trained 20+ end users and authored configuration documentation and user manuals.</li>
+          <li>Integrated TallyPrime with KRA eTims and M-Pesa; ran data migration, system testing, and post-go-live support.</li>
+          <li>Worked alongside senior consultants on Oracle NetSuite and Microsoft Dynamics 365 / Business Central deployments.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT -->
+    <div class="cv-section">
+      <h2>Projects</h2>
+      <div class="project-item">
+        <div class="project-header">
+          <span class="project-name">Sokoni Connect — Senior Capstone Project (2025)</span>
+          <span class="project-link">github.com/KimutaiAsbel/SokoniConnect</span>
+        </div>
+        <p class="project-stack"><strong>Stack:</strong> React 18 + TypeScript, Node.js + Express, SQLite</p>
+        <ul>
+          <li>Full-stack market management platform digitizing traditional markets in Nandi County, Kenya.</li>
+          <li>Implemented live M-Pesa STK Push payments and multi-role JWT authentication.</li>
+          <li>Deployed across Heroku, Vercel, Railway, and Render; CSV analytics export and reporting.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="cv-section">
+      <h2>Education</h2>
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-degree">B.Sc. Software Engineering</span>
+          <span class="edu-date">2021 – 2025</span>
+        </div>
+        <p class="edu-school">University of Eastern Africa, Baraton</p>
+        <p class="edu-note">Capstone: Sokoni Connect. Coursework: Software Architecture, Database Systems, Algorithms & Data Structures, Web Development.</p>
+      </div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-degree">Kenya Certificate of Secondary Education</span>
+          <span class="edu-date">2017 – 2020</span>
+        </div>
+        <p class="edu-school">Nairobi School</p>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="cv-section">
+      <h2>Certifications</h2>
+      <div class="cert-item">
+        <span class="cert-name">TallyPrime Specialist</span>
+        <span class="cert-issuer"> — Tally Education Pvt. Ltd., India (2025)</span>
+        <p style="color:#555;font-size:9.5pt;">Certified in accounting, inventory management, payroll, and business management on TallyPrime.</p>
+      </div>
+    </div>
+
+    <!-- REFERENCES -->
+    <div class="cv-section">
+      <h2>References</h2>
+      <div class="refs-grid">
+        <div class="ref-item">
+          <strong>Philomena Kassidy</strong>
+          <p>Implementation Engineer<br>ERP Business Systems Solutions<br>kassidy@business-sys.com<br>+254 701 712 739</p>
+        </div>
+        <div class="ref-item">
+          <strong>Julius Ndai</strong>
+          <p>CEO, Imara Logic Systems<br>info@imaralogic.co.ke<br>+254 713 558 761</p>
+        </div>
+        <div class="ref-item">
+          <strong>Brian Cheruiyot</strong>
+          <p>Sales Manager<br>Imara Logic Systems<br>brian@imaralogic.co.ke<br>+254 746 828 741</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
