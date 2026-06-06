@@ -551,70 +551,239 @@ h1 {
 /* ── Projects ────────────────────────────────────────────── */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2rem;
 }
 
 .project-card {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.75rem;
-  transition: border-color 0.25s, transform 0.25s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.35s ease;
+  position: relative;
 }
-.project-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-3px); }
 
-.project-header {
+/* colour-matched glow — set per card via custom property */
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--card-glow, rgba(56,189,248,0.5));
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px var(--card-glow, rgba(56,189,248,0.2)), 0 8px 32px var(--card-glow-shadow, rgba(56,189,248,0.15));
+}
+
+/* per-card glow colours */
+.project-card.card-sokoni  { --card-glow: rgba(52,211,153,0.5); --card-glow-shadow: rgba(52,211,153,0.18); }
+.project-card.card-ai      { --card-glow: rgba(139,92,246,0.55); --card-glow-shadow: rgba(139,92,246,0.2); }
+.project-card.card-erp     { --card-glow: rgba(14,165,233,0.5); --card-glow-shadow: rgba(14,165,233,0.18); }
+.project-card.card-web     { --card-glow: rgba(236,72,153,0.5); --card-glow-shadow: rgba(236,72,153,0.18); }
+
+/* ── Banner ── */
+.project-banner {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* the actual background layer — zooms on hover */
+.project-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.project-card:hover .project-banner-bg { transform: scale(1.07); }
+
+/* dot-grid texture on top of the photo/gradient */
+.project-banner-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* dark gradient scrim so text is legible */
+.project-banner-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.3) 55%, transparent 100%);
+  z-index: 1;
+}
+
+/* per-project gradient backgrounds */
+.banner-bg-sokoni {
+  background-image: url('images/projects/sokoni.jpg');
+  background-color: #064e3b;
+  background-image:
+    url('images/projects/sokoni.jpg'),
+    linear-gradient(135deg, #064e3b 0%, #065f46 45%, #b45309 100%);
+}
+.banner-bg-ai {
+  background-image: url('images/projects/ai-automation.jpg');
+  background-color: #1e1b4b;
+  background-image:
+    url('images/projects/ai-automation.jpg'),
+    linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #0369a1 100%);
+}
+.banner-bg-erp {
+  background-image: url('images/projects/erp.jpg');
+  background-color: #0c1a2e;
+  background-image:
+    url('images/projects/erp.jpg'),
+    linear-gradient(135deg, #0c1a2e 0%, #0e4472 50%, #065f46 100%);
+}
+.banner-bg-web {
+  background-image: url('images/projects/web.jpg');
+  background-color: #2d0a4e;
+  background-image:
+    url('images/projects/web.jpg'),
+    linear-gradient(135deg, #2d0a4e 0%, #6b21a8 50%, #9d174d 100%);
+}
+
+/* banner inner UI — sits above scrim */
+.project-banner-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.project-banner-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
 }
 
-.project-icon {
-  color: var(--accent);
-  background: var(--accent-dim);
-  width: 52px; height: 52px;
+/* category badge — top left */
+.project-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 0.28rem 0.75rem;
+}
+
+/* links row — top right */
+.project-banner-links { display: flex; gap: 0.4rem; }
+.project-banner-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: #fff;
+  transition: background 0.2s;
+}
+.project-banner-links a:hover { background: rgba(255,255,255,0.28); color: #fff; }
+
+/* banner bottom — large icon left, year right */
+.project-banner-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.project-banner-icon {
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 12px;
+  color: #fff;
+  transition: background 0.2s;
+}
+.project-card:hover .project-banner-icon { background: rgba(255,255,255,0.2); }
+
+.project-banner-year {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.12);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  user-select: none;
 }
 
-.project-links { display: flex; gap: 0.5rem; }
-.project-links a {
-  color: var(--text-muted);
-  transition: color 0.2s;
+/* ── Card body ── */
+.project-body {
+  padding: 1.4rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-.project-links a:hover { color: var(--accent); }
 
 .project-card h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.2rem;
+  font-size: 1.18rem;
+  font-weight: 800;
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.01em;
 }
 
 .project-sub {
-  color: var(--accent);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
 }
 
 .project-card p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
   margin-bottom: 0.5rem;
 }
 
 .project-bullets {
   padding-left: 1.1rem;
   list-style: disc;
-  margin-top: 1rem;
+  margin-top: 0.85rem;
 }
 .project-bullets li {
   color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  margin-bottom: 0.3rem;
 }
+
+/* ── Project footer — "View project" link ── */
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1.25rem;
+}
+.project-footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap 0.2s;
+}
+.project-footer a:hover { gap: 0.6rem; color: var(--accent-soft); }
 
 /* ── Education ───────────────────────────────────────────── */
 .edu-grid {
