@@ -578,6 +578,8 @@ h1 {
 .project-card.card-ai      { --card-glow: rgba(139,92,246,0.55); --card-glow-shadow: rgba(139,92,246,0.2); }
 .project-card.card-erp     { --card-glow: rgba(14,165,233,0.5); --card-glow-shadow: rgba(14,165,233,0.18); }
 .project-card.card-web     { --card-glow: rgba(236,72,153,0.5); --card-glow-shadow: rgba(236,72,153,0.18); }
+.project-card.card-laravel { --card-glow: rgba(249,115,22,0.5); --card-glow-shadow: rgba(249,115,22,0.18); }
+.project-card.card-finance { --card-glow: rgba(234,179,8,0.5);  --card-glow-shadow: rgba(234,179,8,0.18); }
 
 /* ── Banner ── */
 .project-banner {
@@ -642,6 +644,20 @@ h1 {
   background-image:
     url('images/projects/web.jpg'),
     linear-gradient(135deg, #2d0a4e 0%, #6b21a8 50%, #9d174d 100%);
+}
+.banner-bg-laravel {
+  background-image: url('images/projects/imara-erp.jpg');
+  background-color: #1c1917;
+  background-image:
+    url('images/projects/imara-erp.jpg'),
+    linear-gradient(135deg, #1c1917 0%, #7c2d12 45%, #4338ca 100%);
+}
+.banner-bg-finance {
+  background-image: url('images/projects/imara-brokers.jpg');
+  background-color: #0a0f1e;
+  background-image:
+    url('images/projects/imara-brokers.jpg'),
+    linear-gradient(135deg, #0a0f1e 0%, #0c2340 50%, #78350f 100%);
 }
 
 /* banner inner UI — sits above scrim */
