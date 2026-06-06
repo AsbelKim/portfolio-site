@@ -597,7 +597,10 @@ h1 {
   background-position: center;
   transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.project-card:hover .project-banner-bg { transform: scale(1.07); }
+.project-card:hover .project-banner-bg {
+  transform: scale(1.07);
+  filter: brightness(1.12) saturate(1.2);
+}
 
 /* dot-grid texture on top of the photo/gradient */
 .project-banner-bg::after {
@@ -608,56 +611,48 @@ h1 {
   background-size: 18px 18px;
 }
 
-/* dark gradient scrim so text is legible */
+/* dark gradient scrim so text is legible over photo */
 .project-banner-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.3) 55%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(10,15,30,0.96) 0%,
+    rgba(10,15,30,0.55) 45%,
+    rgba(10,15,30,0.2) 100%
+  );
   z-index: 1;
+  transition: background 0.4s ease;
+}
+.project-card:hover .project-banner-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(10,15,30,0.92) 0%,
+    rgba(10,15,30,0.35) 45%,
+    rgba(10,15,30,0.08) 100%
+  );
 }
 
-/* per-project gradient backgrounds */
+/* per-project photo backgrounds — colour fallback shown if image fails to load */
 .banner-bg-sokoni {
   background-image: url('images/projects/sokoni.jpg');
   background-color: #064e3b;
-  background-image:
-    url('images/projects/sokoni.jpg'),
-    linear-gradient(135deg, #064e3b 0%, #065f46 45%, #b45309 100%);
 }
 .banner-bg-ai {
   background-image: url('images/projects/ai-automation.jpg');
   background-color: #1e1b4b;
-  background-image:
-    url('images/projects/ai-automation.jpg'),
-    linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #0369a1 100%);
 }
 .banner-bg-erp {
-  background-image: url('images/projects/erp.jpg');
+  background-image: url('images/projects/cafeteria.jpg');
   background-color: #0c1a2e;
-  background-image:
-    url('images/projects/erp.jpg'),
-    linear-gradient(135deg, #0c1a2e 0%, #0e4472 50%, #065f46 100%);
-}
-.banner-bg-web {
-  background-image: url('images/projects/web.jpg');
-  background-color: #2d0a4e;
-  background-image:
-    url('images/projects/web.jpg'),
-    linear-gradient(135deg, #2d0a4e 0%, #6b21a8 50%, #9d174d 100%);
 }
 .banner-bg-laravel {
   background-image: url('images/projects/imara-erp.jpg');
   background-color: #1c1917;
-  background-image:
-    url('images/projects/imara-erp.jpg'),
-    linear-gradient(135deg, #1c1917 0%, #7c2d12 45%, #4338ca 100%);
 }
 .banner-bg-finance {
   background-image: url('images/projects/imara-brokers.jpg');
   background-color: #0a0f1e;
-  background-image:
-    url('images/projects/imara-brokers.jpg'),
-    linear-gradient(135deg, #0a0f1e 0%, #0c2340 50%, #78350f 100%);
 }
 
 /* banner inner UI — sits above scrim */
